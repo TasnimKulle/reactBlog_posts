@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { PostsContext } from '../context/PostsContext'
-import { Link, useLocation, useNavigate } from 'react-router';
-
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 export const Home = () => {
   const {posts}=useContext(PostsContext);
   const location = useLocation();
@@ -13,6 +12,7 @@ export const Home = () => {
   const filteredPosts=posts.filter((post)=>(post.title ||"").toLowerCase().includes((searchTerm.toLowerCase())))
 
   const handleSearsh=(e)=>{
+      e.preventDefault();
     const formData= new FormData(e.target);
     const searchValue=formData.get('search');
     navigate(`/?search=${encodeURIComponent(searchValue)}`)
