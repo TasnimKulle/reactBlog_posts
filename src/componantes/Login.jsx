@@ -17,6 +17,7 @@ export const Login = () => {
   // Redirect to the page the user was trying to access, or to home
     // const from = location.state?.from?.pathname || '/';
     // navigate(from, { replace: true });
+    // 
     }
   return (
     <div  className='max-w-6xl mx-auto mt-6 p-6 bg-white rounded '>

@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { PostsContext } from '../context/PostsContext';
+import { useNavigate } from 'react-router';
 
 export const CreatePost = () => {
   const [title,setTitle]=useState('');
   const[content,setContent]=useState('')
+  const {addPosts}=useContext(PostsContext)
+  const navigate=useNavigate()
   const handleSubmit=(e)=>{
     e.preventDefault()
-
+    addPosts({title,content})
+    navigate('/')
+ 
   }
   return (
     <div  className='max-w-6xl mx-auto mt-6 shadow'>
@@ -14,7 +20,7 @@ export const CreatePost = () => {
         <form onSubmit={handleSubmit}
         className='my-3 space-y-2'>
           <div >
-            <label htmlFor="">Title:
+            <label htmlFor="">Title:{''}
               <input 
               type="text"
               value={title}
@@ -24,7 +30,7 @@ export const CreatePost = () => {
             </label>
           </div>
           <div>
-            <label htmlFor="">Content:
+            <label htmlFor="">Content:{''}
               <textarea 
               value={content}
               onChange={(e)=>setContent(e.target.value)}

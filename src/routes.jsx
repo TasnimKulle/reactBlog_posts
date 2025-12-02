@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
             {
                 path:'createPost',
                 element:(
-                    <ProtectedRoute element={<CreatePost/>}/ >
+                    <ProtectedRoute element={<CreatePost/>}/>
                 )
 
             },
