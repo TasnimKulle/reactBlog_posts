@@ -16,6 +16,12 @@ export const Home = () => {
     const formData= new FormData(e.target);
     const searchValue=formData.get('search');
     navigate(`/?search=${encodeURIComponent(searchValue)}`)
+  
+
+    console.log(formData.get('search'));
+    console.log([...formData.values()]);
+
+
 
   }
   return (
