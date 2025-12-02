@@ -43,6 +43,7 @@ export const Home = () => {
             filteredPosts.map((post)=>(
               <li key={post.id}>
                 <Link
+                className='text-blue-700 hover:underline'
                 to={`/posts/${post.id}`}
                 >{post.title}</Link>
               </li>

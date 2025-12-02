@@ -26,14 +26,14 @@ export const PostDetail = () => {
         }
     }
   return (
-    <div>
-        <h2>{post.title}</h2>
+    <div className='max-w-6xl mx-auto mt-6 p-6 bg-white rounded shadow-sm'>
+        <h2 className='font-bold'>{post.title}</h2>
         <p>{post.content}</p>
-        <div>
+        <div className='flex gap-3'>
             {
                 currentId>1 && (
                     <button 
-                    className='bg-blue-700 text-white px-3 py-1'
+                    className='bg-blue-700 text-white px-3 py-1 rounded-lg'
                     onClick={()=>handleNavigation('prev')}
                     >Previous</button>
                 )
@@ -41,7 +41,7 @@ export const PostDetail = () => {
             {
                 currentId<posts.length &&(
                     <button 
-                    className='bg-blue-700 text-white px-3 py-1'
+                    className='bg-blue-700 text-white px-3 py-1 rounded-lg'
                     onClick={()=>handleNavigation('next')}
                     > Next</button>
                 )
