@@ -3,6 +3,7 @@ import App from "./App";
 import { Home } from "./componantes/Home";
 import { CreatePost } from "./componantes/CreatePost";
 import { Login } from "./componantes/Login";
+import { ProtectedRoute } from "./componantes/ProtectedRoute";
 
 export const router = createBrowserRouter([
     {
@@ -15,7 +16,9 @@ export const router = createBrowserRouter([
             },
             {
                 path:'createPost',
-                element:<CreatePost/>
+                element:(
+                    <ProtectedRoute element={<CreatePost/>}/ >
+                )
 
             },
             {
