@@ -1,26 +1,38 @@
-import React, { useContext } from 'react'
+import React, { use, useContext, useEffect, useState } from 'react'
 import { PostsContext } from '../context/PostsContext'
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router';
 export const Home = () => {
   const {posts}=useContext(PostsContext);
   const location = useLocation();
   const navigate = useNavigate()
+  const [filtedPosts ,setFiltedPosts]=useState(posts)
+   const query =new URLSearchParams(location.search);
+   const searchTerm =query.get('search')||"";
+  useEffect(()=>{
+    if(searchTerm != ''){
+       const filteredPosts=posts.filter((post)=>(post.title ||"").toLowerCase().includes((searchTerm.toLowerCase())))
+       setFiltedPosts(filteredPosts)
+       console.log('from useeffect ',filteredPosts)
+    }else{
+      console.log('here')
+    }
+  },[searchTerm])
 
-  const query =new URLSearchParams(location.search);
-  const searchTerm =query.get('search')||"";
-
-  const filteredPosts=posts.filter((post)=>(post.title ||"").toLowerCase().includes((searchTerm.toLowerCase())))
+ 
+ 
+ 
+ 
 
   const handleSearsh=(e)=>{
       e.preventDefault();
     const formData= new FormData(e.target);
     const searchValue=formData.get('search');
-    navigate(`/?search=${encodeURIComponent(searchValue)}`)
+    navigate(`?search=${encodeURIComponent(searchValue)}`)
   
 
-    console.log(formData.get('search'));
-    console.log([...formData.values()]);
-
+    // console.log(formData.get('search'));
+    // console.log([...formData.values()]);
+ console.log({searchTerm})
 
 
   }
@@ -34,6 +46,7 @@ export const Home = () => {
           <input 
           type="text"
           name='search'
+        
           defaultValue={searchTerm}
           placeholder='search post'
           className='p-2 border border-gray-200 rounded focus:outline-none
@@ -46,7 +59,7 @@ export const Home = () => {
         </form>
         <ul>
           {
-            filteredPosts.map((post)=>(
+            filtedPosts.map((post)=>(
               <li key={post.id}>
                 <Link
                 className='text-blue-700 hover:underline'
