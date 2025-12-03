@@ -17,7 +17,7 @@ function App() {
         <h1 className="text-2xl font-bold">React Blog</h1>
         <nav className="flex  items-start">
           <NavLink
-            to="home"
+            to="/"
             className={({ isActive }) =>
               isActive
                 ? "bg-blue-800 text-blue-50 px-4 py-2 rounded-sm"
@@ -30,7 +30,7 @@ function App() {
           isAuthenticated ? (
             <div>
                <NavLink
-            to="createPost"
+            to="/createPost"
             className={({ isActive }) =>
               isActive
                 ? "bg-blue-800 text-blue-50 px-4 py-2 rounded-sm"
